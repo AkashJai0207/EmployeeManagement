@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Employee Table</title>
+        <style>
+            body{
+                padding: 0px;
+                margin: 0px;
+            }
+            form{
+                margin-top: 110px;
+            }
+             nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 10%;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: crimson;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                background-color: white;
+            }
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            .col{
+                height: 10px;
+            }
+            .ui-datatable th.ui-state-default {
+                width: 70px;
+                font-size: 12px;
+            }
+            .row{
+                height: 10px;
+            }
+            .ui-widget-content{
+                width: 70px;
+                font-size: 12px;
+                text-align: center;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <h:graphicImage url="image/svmLogo.png"/> 
+            <h1>Employee Management System</h1>
+            <nav>
+                <a href="faces/home.xhtml">Home</a>
+                <a href="faces/addEmployee.xhtml">Add Employee</a>
+                <a href="faces/employeeTable.xhtml">Employee Table</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+                <a href="faces/index.xhtml">Logout</a>
+            </nav>
+        </header>
+        <h:form id="abc">
+            <p:growl id="growl" sticky="false" life="3000" showDetail="true"/>
+            <p:dataTable value="#{employeeBean.emp}" var="emp">
+                <p:column headerText="Employee Id" class="col">
+                    <h:outputText class="row" value="#{emp.empid}"/>
+                </p:column>
+                <p:column headerText="Employee Name" class="col">
+                    <h:outputText class="row" value="#{emp.name}"/>
+                </p:column>
+                <p:column headerText="Position(SVM)" class="col">
+                    <h:outputText class="row" value="#{emp.position}"/>
+                </p:column>
+                <p:column headerText="Email" class="col">
+                    <h:outputText class="row" value="#{emp.email}"/>
+                </p:column>
+                <p:column headerText="Phone No" class="col">
+                    <h:outputText class="row" value="#{emp.phno}"/>
+                </p:column>
+                <p:column headerText="DOJ" class="col">
+                    <h:outputText class="row" value="#{emp.doj}"/>
+                </p:column>
+                <p:column headerText="DOB" class="col">
+                    <h:outputText class="row" value="#{emp.dob}"/>
+                </p:column>
+                <p:column headerText="Address" class="col">
+                    <h:outputText class="row" value="#{emp.addr}"/>
+                </p:column>
+                <p:column headerText="Maritial Status" class="col">
+                    <h:outputText class="row" value="#{emp.maritialstatus}"/>
+                </p:column>
+                <p:column headerText="Edit" class="col">
+                    <p:commandButton value="Update" action="#{employeeBean.edit(emp.empid)}" />
+                </p:column>
+                <p:column headerText="Delete"  class="col">
+                    <p:commandButton value="Delete" actionListener="#{employeeBean.del(emp.empid)}" update="@form"/>
+                </p:column>
+            </p:dataTable>
+            
+        </h:form>
+        <footer>
+            &copy; 2024 My Website. All rights reserved.
+        </footer>
+    </h:body>
+</html>
+

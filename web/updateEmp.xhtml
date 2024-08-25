@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Update</title>
+        <style>
+            .content{
+                /*text-align: center;*/
+                /*display: flex;*/
+                /*flex-direction: column;*/
+                /*width: 250px;*/
+                /*align-content: center;*/
+                /*justify-content: center;*/
+
+            }
+            body{
+                padding: 0px;
+                margin: 0px;
+            }
+            form{
+                display: flex;
+                /*align-content: center;*/
+                justify-content: center;
+                margin-top: 90px;
+            }
+            .maindiv{
+                /*overflow-y: auto;*/
+
+                margin-bottom: 50px;
+                /*height: calc(100vh - 120px);*/
+                /*position: absolute;*/
+                /*                height: 100vh;
+                */width: 45%;
+                /*align-items: center;*/
+            }
+            nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 10%;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 10px;
+            }
+            header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: crimson;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                background-color: white;
+            }
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            .col-25 {
+                /*float: left;*/
+                width: 50%;
+                margin-top: 9px;
+            }
+
+            .col-75 {
+                /*float: left;*/
+                /*justify-content: space-around;*/
+                width: 75%;
+                margin-top: 6px;
+                margin-left: 80px;
+            }
+
+            .row{
+                display: flex;
+                flex-direction: row;
+            }
+            input::placeholder{
+                color: #cccccc;
+                font-size: 80%;
+            }
+            .ui-button-icon-only{
+                width: 30px;
+                height: 30px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <header>
+            <h:graphicImage url="image/svmLogo.png"/> 
+            <h1>Employee Management System</h1>
+            <nav>
+                <a href="faces/home.xhtml">Home</a>
+                <a href="faces/addEmployee.xhtml">Add Employee</a>
+                <a href="faces/employeeTable.xhtml">Employee Table</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+                <a href="faces/index.xhtml">Logout</a>
+            </nav>
+        </header>
+        <h:form>
+            <p:growl id="growl" sticky="false" life="3000" showDetail="false"/>
+            <div class="maindiv">
+                <h1>Update Employee</h1>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="empid" value="Employee ID: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:inputText class="input" disabled="true" id="empid" value="#{employeeBean.empid}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="name" value="Employee Name: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:inputText class="input" id="name" value="#{employeeBean.name}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="desg" value="Position(SVM): "/>
+                        </div>
+                        <div class="col-75">
+                            <p:inputText class="input" id="desg" value="#{employeeBean.position}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="mail" value="Email: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:inputText class="input" id="mail" value="#{employeeBean.email}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="phno" value="PhoneNo: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:inputText class="input" id="phno" value="#{employeeBean.phno}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="doj" value="DOJ: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:calendar class="input" pattern="yyyy-MM-dd" navigator="true" showOn="button" showButtonPanel="true" required="true" requiredMessage="DOJ is required" value="#{employeeBean.doj}">
+                            <!--<f:convertDateTime pattern="yyyy-MM-dd" />-->
+                            </p:calendar>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="dob" value="DOB: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:calendar class="input" pattern="yyyy-MM-dd" navigator="true" showOn="button" showButtonPanel="true" required="true" requiredMessage="DOB is required" value="#{employeeBean.dob}">
+                                <!--<f:convertDateTime pattern="yyyy-MM-dd" />-->
+                            </p:calendar>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="addr" value="Address: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:inputTextarea class="input" id="addr" value="#{employeeBean.addr}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <h:outputLabel for="maritialstatus" value="Maritial Status: "/>
+                        </div>
+                        <div class="col-75">
+                            <p:selectOneMenu  class="inputText" value="#{employeeBean.maritialstatus}">
+                                <f:selectItem itemLabel="Single" itemValue="Single"/>
+                                <f:selectItem itemLabel="Married" itemValue="Married"/>
+                            </p:selectOneMenu><br/><br/>
+                        </div>
+                    </div>
+                    <br/><center><h:commandButton id="submit" value="Update" action="#{employeeBean.update(employeeBean.empid)}"/></center>
+                </div>
+            </div>
+        </h:form>
+        <footer>
+            &copy; 2024 My Website. All rights reserved.
+        </footer>
+    </h:body>
+</html>
+
